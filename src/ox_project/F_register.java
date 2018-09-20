@@ -13,7 +13,10 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 import static com.mongodb.client.model.Filters.eq;
+import com.mongodb.gridfs.GridFS;
+import com.mongodb.gridfs.GridFSInputFile;
 import java.awt.Font;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
@@ -45,6 +48,8 @@ public class F_register extends javax.swing.JFrame {
         seedData.add(new Document("ID",tx_id.getText())
                 .append("Pass", tx_pass.getText())
                 .append("Name", tx_Name.getText())
+                .append("AvatarID", tx_avatar.getText())
+
                
         );
         user.insertMany(seedData);
@@ -63,6 +68,7 @@ public class F_register extends javax.swing.JFrame {
             return false;
         }
     }
+    
     
     public void checkID(){
         
@@ -98,6 +104,7 @@ public class F_register extends javax.swing.JFrame {
         tx_id.setText("");
         tx_pass.setText("");
         tx_repass.setText("");
+        tx_avatar.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -113,8 +120,16 @@ public class F_register extends javax.swing.JFrame {
         tx_pass = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         tx_repass = new javax.swing.JPasswordField();
+        btn_Avatar1 = new javax.swing.JButton();
+        btn_Avatar2 = new javax.swing.JButton();
+        btn_Avatar4 = new javax.swing.JButton();
+        btn_Avatar3 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        tx_avatar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        kGradientPanel1.setkGradientFocus(700);
 
         btn_summit.setText("Register");
         btn_summit.addActionListener(new java.awt.event.ActionListener() {
@@ -143,14 +158,36 @@ public class F_register extends javax.swing.JFrame {
 
         tx_repass.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
 
+        btn_Avatar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/1269-face-with-stuck-out-tongue-and-winking-eye.png"))); // NOI18N
+        btn_Avatar1.setBorder(null);
+        btn_Avatar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Avatar1ActionPerformed(evt);
+            }
+        });
+
+        btn_Avatar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/147140.png"))); // NOI18N
+        btn_Avatar2.setBorder(null);
+
+        btn_Avatar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/avatar-377-456329.png"))); // NOI18N
+        btn_Avatar4.setBorder(null);
+
+        btn_Avatar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/194826.png"))); // NOI18N
+        btn_Avatar3.setBorder(null);
+
+        jLabel5.setFont(new java.awt.Font("TH Sarabun New", 1, 36)); // NOI18N
+        jLabel5.setText("Avatar :");
+
+        tx_avatar.setFont(new java.awt.Font("TH Sarabun New", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_summit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                                 .addGap(257, 257, 257)
@@ -161,37 +198,71 @@ public class F_register extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(btn_Avatar1)
+                        .addGap(70, 70, 70)
+                        .addComponent(btn_Avatar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tx_repass, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                             .addComponent(tx_pass)
                             .addComponent(tx_id)
-                            .addComponent(tx_Name))))
-                .addContainerGap(170, Short.MAX_VALUE))
+                            .addComponent(tx_Name)
+                            .addComponent(tx_avatar))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(btn_Avatar3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(btn_Avatar4)
+                        .addGap(72, 72, 72))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_summit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(248, 248, 248))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                .addGap(166, 166, 166)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tx_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(6, 6, 6)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tx_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(6, 6, 6)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tx_repass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tx_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(76, 76, 76)
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tx_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(6, 6, 6)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tx_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(6, 6, 6)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tx_repass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tx_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tx_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Avatar1)
+                            .addComponent(btn_Avatar2)
+                            .addComponent(btn_Avatar3)))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Avatar4)))
+                .addGap(56, 56, 56)
                 .addComponent(btn_summit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,7 +273,9 @@ public class F_register extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -244,6 +317,11 @@ public class F_register extends javax.swing.JFrame {
         }       
     }//GEN-LAST:event_btn_summitActionPerformed
 
+    private void btn_Avatar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Avatar1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_Avatar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,13 +358,19 @@ public class F_register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Avatar1;
+    private javax.swing.JButton btn_Avatar2;
+    private javax.swing.JButton btn_Avatar3;
+    private javax.swing.JButton btn_Avatar4;
     private keeptoo.KButton btn_summit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JTextField tx_Name;
+    private javax.swing.JTextField tx_avatar;
     private javax.swing.JTextField tx_id;
     private javax.swing.JPasswordField tx_pass;
     private javax.swing.JPasswordField tx_repass;

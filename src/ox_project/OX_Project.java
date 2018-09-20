@@ -16,6 +16,7 @@ public class OX_Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new F_register().show();
     }
     
 }
